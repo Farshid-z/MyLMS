@@ -1,16 +1,12 @@
 ﻿using Abp.Domain.Repositories;
 using Abp.ObjectMapping;
-using Microsoft.EntityFrameworkCore;
 using MyLMS.DTOs;
 using MyLMS.Entities;
 using MyLMS.Enums;
 using MyLMS.Services.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Linq.Dynamic.Core;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MyLMS.Services.Implementations
@@ -32,35 +28,6 @@ namespace MyLMS.Services.Implementations
             this._ObjectMapper = objectMapper;
             this._StudentLessonRepository = studentLessonRepository;
         }
-        //// Done
-        //public async Task<bool> AsignLessonToStudent(LessonToStudentDto asignLessonToStudent)
-        //{
-        //    var existLesson = _SessionRepository.Load(asignLessonToStudent.LessonId);
-        //    if (existLesson == null)
-        //        return false;
-        //    if(!_StudentRepository.GetAll().Any(x=>x.Id == asignLessonToStudent.StudentId))
-        //        return false;
-        //    //  check is student passed previos lessons of same session
-        //    if(existLesson.Order > 1)
-        //    {
-        //        var studentPassedLessons = _StudentLessonRepository
-        //            .GetAll()
-        //            .Where
-        //            (
-        //                x => x.StudentId == asignLessonToStudent.StudentId &&
-        //                x.State == StudentLesson.LessonState.Done &&
-        //                x.Lesson.SessionId == existLesson.SessionId &&
-        //                x.Lesson.Order == existLesson.Order - 1
-        //            );
-
-        //        if(studentPassedLessons == null || studentPassedLessons.Count() == 0)
-        //            return false;
-        //    }
-
-        //    var studentLesson = _ObjectMapper.Map<StudentLesson>(asignLessonToStudent);
-        //    int id = await _StudentLessonRepository.InsertAndGetIdAsync(studentLesson);
-        //    return id > 0;
-        //}
         public async Task<int> CreateLesson(CreateLessonDto createLessonDto)
         {
             int lastOrderNum = 0;

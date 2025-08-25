@@ -13,7 +13,6 @@ namespace MyLMS.Services.Interfaces
     {
         Task<int> CreateLesson(CreateLessonDto createLessonDto);
         Task<BasicDeleteResult> DeleteLesson(int lessonId);
-        //Task<bool> AsignLessonToStudent(LessonToStudentDto asignLessonToStudent);
 
     }
 }
